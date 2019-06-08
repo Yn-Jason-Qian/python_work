@@ -3,7 +3,7 @@ class Settings():
 
     def __init__(self):
         self.width = 1200
-        self.height = 800
+        self.height = 600
         self.bg_color = (230, 230, 230)
 
         # 飞船的移动速度因子
