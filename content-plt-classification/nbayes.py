@@ -14,33 +14,31 @@ def read_bunch(path):
 
 # 分类结果保存至文件
 def save_file(save_path, content):
-    with open(save_path, mode="a", encoding="utf-8", errors="ignore") as fp:
+    with open(save_path, mode="w", encoding="utf-8", errors="ignore") as fp:
         fp.write(content)
 
 
 # 朴素贝叶斯分类
 def nbayes_classify(train_set, test_set):
     """
-
     :param train_set: 训练集样本数据
     :param test_set: 测试集样本数据
     :return: 测试集样本分类
     """
     clf = MultinomialNB(alpha=0.5)
     clf.fit(train_set.tdm, train_set.label)     # 训练模型
-    predict = clf.predict(test_set.tdm)
-    return predict
+    return clf.predict(test_set.tdm)
 
 
 def classification_result(actual, predict):
-    print("精度:(0:.3f)".format(metrics.precision_score(actual, predict, average="weighted")))
-    print("召回:(0:.3f)".format(metrics.recall_score(actual, predict, average="weighted")))
-    print("f1:(0:.3f)".format(metrics.f1_score(actual, predict, average="weighted")))
+    print("精度:{0:0.3f}".format(metrics.precision_score(actual, predict, average="weighted")))
+    print("召回:{0:0.3f}".format(metrics.recall_score(actual, predict, average="weighted")))
+    print("f1:{0:0.3f}".format(metrics.f1_score(actual, predict, average="weighted")))
 
 
 if __name__ == "__main__":
     # 导入训练集
-    train_path = "./train_tfidfspace.dat"
+    train_path = "./train_tfdifspace.dat"
     train_set = read_bunch(train_path)
 
     # 导入测试集

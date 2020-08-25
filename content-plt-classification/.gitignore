@@ -114,3 +114,5 @@ train_segments/
 theme_tag/
 test_words/
 test_segments/
+
+*.dat

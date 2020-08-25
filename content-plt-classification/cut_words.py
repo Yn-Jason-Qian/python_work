@@ -9,7 +9,7 @@ import jieba.analyse  # 导入提取关键词的库
 # 对训练集，测试集文本进行切词处理，对测试集数据打上主题标签
 # 保存至文件
 def save_file(save_path, content):
-    with open(save_path, "a", encoding='utf-8', errors='ignore') as fp:
+    with open(save_path, "w", encoding='utf-8', errors='ignore') as fp:
         fp.write(content)
 
 
@@ -47,18 +47,20 @@ def cast_words(origin_path, save_path, theme_tag):
             full_path = file_path + detail_path  # 原始文件下每个文档路径
             file_content = read_file(full_path)
             file_content = file_content.strip()  # replace("\r\n", " ")
-                                                 # 删除换行
+            # 删除换行
             file_content = file_content.replace("\'", "")
-            file_content = file_content.replace(" \ n ", "")
+            file_content = file_content.replace("\\n", "")
 
             content_seg = jieba.cut(file_content)  # 为文件内容分词
+            content_seg_str = " ".join(content_seg)
 
             if theme_tag is not None:
                 print("文件路径:{} ".format(theme_tag + detail_path))
-                theme = extract_theme(" ".join(content_seg))  # theme为该文章主题关键词
+                theme = extract_theme(content_seg_str)  # theme为该文章主题关键词
                 print("文章主题关键词:{} ".format(theme))
                 save_file(theme_tag + detail_path, theme)  # 将训练集文章的主题关键词保存到标签存储路径
-            save_file(seg_path + detail_path, " ".join(content_seg))  # 将处理后的文件保存到分词后语料目录
+
+            save_file(seg_path + detail_path, content_seg_str)  # 将处理后的文件保存到分词后语料目录
 
 
 if __name__ == "__main__":
