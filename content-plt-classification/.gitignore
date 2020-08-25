@@ -108,3 +108,9 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+train_words/
+train_segments/
+theme_tag/
+test_words/
+test_segments/
