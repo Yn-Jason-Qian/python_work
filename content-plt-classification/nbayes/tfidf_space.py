@@ -65,10 +65,10 @@ def test_tfidf_space(stopword_path, test_bunch_path, test_tfidf_data, train_tfid
 if __name__ == "__main__":
     # 训练集数据处理
     stopword_path = "./chinese_stop_words.txt"  # 停用词表路径
-    train_bunch_path = './train_bunch_bag.dat'
-    train_tfidf_data = './train_tfdifspace.dat'
+    train_bunch_path = './sub_data//train_bunch_bag.dat'
+    train_tfidf_data = './sub_data//train_tfdifspace.dat'
     train_tfidf_space(stopword_path, train_bunch_path, train_tfidf_data)
     # 测试集处理
-    test_bunch_path = './test_bunch_bag.dat'
-    test_tfidf_data = './test_tfidfspace.dat'
+    test_bunch_path = './sub_data//test_bunch_bag.dat'
+    test_tfidf_data = './sub_data//test_tfidfspace.dat'
     test_tfidf_space(stopword_path, test_bunch_path, test_tfidf_data, train_tfidf_data)

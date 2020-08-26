@@ -37,8 +37,8 @@ def word_to_bunch(train_save_path, train_bunch_path):
 
 if __name__ == "__main__":
     train_save_path = './train_segments/'
-    train_bunch_path = "train_bunch_bag.dat"
+    train_bunch_path = "./sub_data/train_bunch_bag.dat"
     word_to_bunch(train_save_path, train_bunch_path)
     test_save_path = './test_segments/'
-    test_bunch_path = "test_bunch_bag.dat"
+    test_bunch_path = "./sub_data/test_bunch_bag.dat"
     word_to_bunch(test_save_path, test_bunch_path)

@@ -26,7 +26,7 @@ def extract_theme(content):
     themes = []
     tags = jieba.analyse.extract_tags(content, topK=3, withWeight=True, allowPOS=['n', 'ns', 'v', 'vn'], withFlag=True)
     for i in tags:
-        themes.append(i[0].word)
+        themes.append(i[0].word + ":" + str(i[1]))
     return str(themes)
 
 
@@ -67,9 +67,9 @@ if __name__ == "__main__":
     # 对训练集进行分词
     train_words_path = './train_words/'
     train_save_path = './train_segments/'
-    cast_words(train_words_path, train_save_path, theme_tag=None)
+    theme_tag_path = './theme_tag/'  # 存放测试机文章主题标签路径
+    cast_words(train_words_path, train_save_path, theme_tag=theme_tag_path)
     # 对测试集进行分词 抽取文章主题标签
     train_words_path = './test_words/'
     train_save_path = './test_segments/'
-    theme_tag_path = './theme_tag/'  # 存放测试机文章主题标签路径
     cast_words(train_words_path, train_save_path, theme_tag=theme_tag_path)
